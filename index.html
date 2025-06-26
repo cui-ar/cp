@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于面向社会公开招聘男朋友的公告</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff9f9;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, #f9f0ff, #fff9f9);
+        }
+        h1 {
+            text-align: center;
+            color: #8e44ad;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #8e44ad;
+        }
+        .section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        h2 {
+            color: #8e44ad;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-btn {
+            padding: 12px 15px;
+            background-color: #d2b4de;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .nav-btn:hover {
+            background-color: #bb8fce;
+            transform: translateY(-2px);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 25px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .modal-question {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .modal-btn {
+            padding: 10px 25px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        .modal-yes {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .modal-no {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .modal-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .attachment {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+        .highlight {
+            color: #8e44ad;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 14px;
+            border-top: 1px dashed #ddd;
+            padding-top: 15px;
+        }
+        .deny-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: none;
+            max-width: 80%;
+            text-align: center;
+        }
+        .close-denial {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #721c24;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="deny-message" id="denyMessage">
+        <h3>很遗憾您不符合条件</h3>
+        <p>感谢您的关注，但您目前不符合本公告的招聘要求。</p>
+        <p>建议您：</p>
+        <ul style="text-align: left; padding-left: 20px;">
+            <li>检查是否过于激动手抖误点</li>
+            <li>深呼吸</li>
+            <li>睁开眼</li>
+        </ul>
+        <button class="close-denial" onclick="closeDenial()">我知道了</button>
+    </div>
+
+    <h1>关于面向社会公开招聘男朋友的公告</h1>
+    
+    <div class="nav">
+        <button class="nav-btn" onclick="showSection('condition')">应聘条件</button>
+        <button class="nav-btn" onclick="showSection('position')">招聘岗位</button>
+        <button class="nav-btn" onclick="showSection('time')">报名时间和方式</button>
+        <button class="nav-btn" onclick="showSection('examine')">考察方式</button>
+        <button class="nav-btn" onclick="showSection('employ')">聘用流程</button>
+        <button class="nav-btn" onclick="showSection('other')">其他说明</button>
+    </div>
+    
+    <div id="condition" class="section active">
+        <h2>应聘条件</h2>
+        <ul>
+            <li>（一）男性，出生日期为1998-1993年</li>
+            <li>（二）本科以上学历，有正式工作（我是硕士且有稳定工作，所以工作性质你随意）</li>
+            <li>（三）不抽烟，性格开朗，积极向上，有自己的兴趣爱好</li>
+            <li>（四）未来孩子出生后要定居市区</li>
+            <li>（五）身高越高越好，颜值越高越好，但不高不帅也没事，自信放光芒</li>
+        </ul>
+    </div>
+    
+    <div id="position" class="section">
+        <h2>招聘岗位</h2>
+        <p>男朋友，仅招一人，<span class="highlight">且永无扩招计划</span></p>
+    </div>
+    
+    <div id="time" class="section">
+        <h2>报名时间和方式</h2>
+        <ul>
+            <li>（一）报名时间：不限（<span class="highlight">搞快点，要不你就等着拍大腿哭吧</span>）</li>
+            <li>（二）报名方式：发送简历和个人近照至邮箱<span class="highlight">1509232630@qq.com</span>，并留下你的微信号或其他联系方式，报名成功后会加好友，报名失败会回复感谢邮件。建议直接关注发布者小红书账号，随机解锁发布者更多信息</li>
+        </ul>
+    </div>
+    
+    <div id="examine" class="section">
+        <h2>考察方式</h2>
+        <ul>
+            <li>（一）笔试：采用线上聊天了解方式进行</li>
+            <li>（二）面试：笔试通过后择一良日以线下方式进行</li>
+            <li>（三）体检：身体健康，无不良生活习惯，无家族遗传疾病</li>
+        </ul>
+    </div>
+    
+    <div id="employ" class="section">
+        <h2>聘用流程</h2>
+        <p>前期各环节均合格的拟聘用人员，将按照规定确立恋爱关系，恋爱期间表现优异可晋升，并委托第三方机构（<span class="highlight">民政局</span>）签订结婚合同，<span class="highlight">最低年限100年</span>。</p>
+    </div>
+    
+    <div id="other" class="section">
+        <h2>其他说明</h2>
+        <p>本次招聘不指定考试辅导用书，不举办也不委托任何机构举办考试辅导培训班（<span class="highlight">条件特别优异者可贿赂考官，给你透题</span>）。</p>
+        <div class="attachment">
+            <strong>附件：</strong> <a href="#">诚信考试承诺书.doc</a>
+        </div>
+    </div>
+    
+    <div id="questionModal" class="modal">
+        <div class="modal-content">
+            <p class="modal-question">恭喜您，已满足上述条件，是否继续浏览剩余内容？</p>
+            <button class="modal-btn modal-yes" onclick="answerQuestion(true)">是</button>
+            <button class="modal-btn modal-no" onclick="answerQuestion(false)">否</button>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>发布日期：2025年6月26日</p>
+        <p>本公告不接受任何质疑，最终解释权归发布者所有</p>
+    </div>
+    
+    <script>
+        let currentSection = 'condition';
+        let targetSection = '';
+        const answeredSections = new Set(['condition']);
+        const denyMessage = document.getElementById('denyMessage');
+        
+        // 页面功能
+        function showSection(sectionId) {
+            if (sectionId === currentSection) return;
+            
+            if (!answeredSections.has(sectionId)) {
+                targetSection = sectionId;
+                document.getElementById('questionModal').style.display = 'block';
+                return;
+            }
+            
+            switchSection(sectionId);
+        }
+        
+        function switchSection(sectionId) {
+            document.getElementById(currentSection).classList.remove('active');
+            document.getElementById(sectionId).classList.add('active');
+            currentSection = sectionId;
+        }
+        
+        function answerQuestion(isYes) {
+            document.getElementById('questionModal').style.display = 'none';
+            
+            if (isYes) {
+                answeredSections.add(targetSection);
+                switchSection(targetSection);
+            } else {
+                showDenialMessage();
+            }
+        }
+        
+        function showDenialMessage() {
+            denyMessage.style.display = 'block';
+        }
+        
+        function closeDenial() {
+            denyMessage.style.display = 'none';
+        }
+        
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('questionModal')) {
+                document.getElementById('questionModal').style.display = 'none';
+            }
+            if (event.target == denyMessage) {
+                closeDenial();
+            }
+        }
+    </script>
+</body>
+</html>
